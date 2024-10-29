@@ -223,6 +223,9 @@ const resetCss = css`
 
   body {
     touch-action: pan-x pan-y;
+    @supports (-webkit-touch-callout: none) {
+      height: -webkit-fill-available;
+    }
   }
 `;
 
