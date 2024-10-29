@@ -1,46 +1,104 @@
-# Getting Started with Create React App
+# 습관 추적앱
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+배포 주소: [Deployment]()
 
-## Available Scripts
+## 버전
 
-In the project directory, you can run:
+- Node >= 20 (20.3.0)
+- Npm >= 9 (9.6.7)
 
-### `npm start`
+## 설치방법
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```javascript
+// 패키지 파일 다운로드
+npm i
+// 설치되지 않는 경우
+npm install --legacy-peer-deps
+// 실행
+npm start
+// 혹은
+npm run start
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## CI / CD 배포방법
 
-### `npm test`
+- main 브랜치 머지시 자동 배포
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 폴더구조
 
-### `npm run build`
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Eslint
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- VsCode 확장 탭 내 Prettier ESLint 설치
+- 작동되지 않는다면 User setting.json에 다음을 설정
 
-### `npm run eject`
+```json
+{
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.formatOnType": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "files.autoSave": "onFocusChange",
+  "vs-code-prettier-eslint.prettierLast": false
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 코드스니펫 설정 (선택)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 설정방법
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 상단 애플로고 옆 Code 클릭 (Mac 기준 VsCode)
+- 기본설정 내 사용자 코드 조각 구성 선택
+- typescript.json / typescriptreact.json 내 아래 코드를 추가 혹은 설정
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+{
+  "web-ui text component": {
+			"prefix": "wtext",
+			"body": [
+				"<Text",
+				"  fontSize=$1",
+				"  fontWeight=$2",
+				"  color={COLORS.$3}",
+				">",
+				"  $4",
+				"</Text>"
+			]
+		},
+  "web-ui divider component": {
+			"prefix": "wdivider",
+			"body": [
+				"<Divider",
+				"  horizontal={$1}",
+				"  vertical={$2}",
+				"  backgroundColor={$3}",
+				"/>",
+			]
+		},
+}
+```
 
-## Learn More
+### 사용법
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 필요한 컴포넌트의 prefix를 입력
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+// ex text component
+wtext
+```
+
+- 아래와 같이 자동완성 되며 import 하여 사용
+
+```
+    <Text
+      fontSize=
+      fontWeight=
+      color={COLORS.}
+    >
+
+    </Text>
+```
