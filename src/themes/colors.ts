@@ -139,3 +139,5 @@ const OPACITY = [
 ];
 
 export const getColorWithOpacity = (hex: string, opacity: number) => hex + OPACITY[opacity * 100];
+
+export const SELECTED_COLOR = COLORS.grey700;

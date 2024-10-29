@@ -7,5 +7,6 @@
   "useTabs": false,
   "arrowParens": "always",
   "endOfLine": "auto",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "singleAttributePerLine": true
 }

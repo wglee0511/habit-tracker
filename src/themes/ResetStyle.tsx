@@ -1,5 +1,7 @@
 import { css, Global } from '@emotion/react';
 
+import { COLORS } from './colors';
+
 const resetCss = css`
   /* http://meyerweb.com/eric/tools/css/reset/ 
     v2.0 | 20110126
@@ -223,6 +225,7 @@ const resetCss = css`
 
   body {
     touch-action: pan-x pan-y;
+    background-color: ${COLORS.grey900};
     @supports (-webkit-touch-callout: none) {
       height: -webkit-fill-available;
     }

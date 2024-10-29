@@ -1,9 +1,14 @@
-export { default as Alarm } from './svgs/Alarm';
-export { default as AlarmNotification } from './svgs/AlarmNotification';
-export { default as Activity } from './svgs/Activity';
+export { default as Backspace } from './svgs/Backspace';
 
-export { default as Card } from './svgs/Card';
+export { default as Close } from './svgs/Close';
+export { default as Calendar } from './svgs/Calendar';
 
-export { default as Dashboard } from './svgs/Dashboard';
+export { default as DarkMode } from './svgs/DarkMode';
 
-export { default as My } from './svgs/My';
+export { default as LightMode } from './svgs/LightMode';
+
+export { default as Progress } from './svgs/Progress';
+
+export { default as Reset } from './svgs/Reset';
+
+export { default as Share } from './svgs/Share';

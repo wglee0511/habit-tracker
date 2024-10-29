@@ -73,13 +73,7 @@ module.exports = {
       },
     ],
     'react/jsx-first-prop-new-line': [2, 'multiline'],
-    'react/jsx-max-props-per-line': [
-      2,
-      {
-        maximum: 1,
-        when: 'multiline',
-      },
-    ],
+    'react/jsx-max-props-per-line': [1, { when: 'multiline' }],
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
     'import/extensions': [
@@ -184,4 +178,4 @@ module.exports = {
     __SERVER__: true,
     __DEV__: true,
   },
-}
+};
