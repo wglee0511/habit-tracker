@@ -2,6 +2,7 @@ import React, { PropsWithChildren, useLayoutEffect } from 'react';
 
 import styled from '@emotion/styled';
 import { isNil } from 'lodash';
+import { getDeviceType } from 'src/lib/device';
 import { useSystemStore, useThemeStore, useToastStore } from 'src/stores';
 import { darkThemeState, lightThemeState } from 'src/stores/theme';
 
@@ -22,8 +23,7 @@ const Theme = ({ children }: PropsWithChildren) => {
   const { isVisible, message, close } = useToastStore();
 
   useLayoutEffect(() => {
-    const { userAgent } = window.navigator;
-    console.log('userAgent: ', userAgent);
+    useSystemStore.setState({ device: getDeviceType() });
     if (isNil(isDarkTheme)) {
       const isDarkMode =
         window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
