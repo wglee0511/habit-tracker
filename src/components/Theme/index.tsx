@@ -23,7 +23,8 @@ const Theme = ({ children }: PropsWithChildren) => {
   const { isVisible, message, close } = useToastStore();
 
   useLayoutEffect(() => {
-    useSystemStore.setState({ device: getDeviceType() });
+    const device = getDeviceType();
+    useSystemStore.setState({ device, isMobile: device !== 'Web' });
     if (isNil(isDarkTheme)) {
       const isDarkMode =
         window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
