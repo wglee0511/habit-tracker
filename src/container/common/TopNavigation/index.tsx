@@ -3,6 +3,7 @@ import React, { useCallback, useRef } from 'react';
 import styled from '@emotion/styled';
 import Text from 'src/components/Text';
 import Icon from 'src/Icons';
+import { hapticFeedback } from 'src/lib/device';
 import { useThemeStore } from 'src/stores';
 
 import { TopNavigationProps } from './type';
@@ -29,6 +30,7 @@ const TopNavigation = ({
 
   const onClickLeading = useCallback(() => {
     onClickLeadingButton();
+    hapticFeedback();
     if (leadingButtonRef?.current) {
       leadingButtonRef.current.blur();
     }
@@ -36,6 +38,7 @@ const TopNavigation = ({
 
   const onClickTrailing = useCallback(() => {
     onClickTrailingButton();
+    hapticFeedback();
     if (trailingButtonRef?.current) {
       trailingButtonRef.current.blur();
     }
