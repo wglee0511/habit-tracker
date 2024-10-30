@@ -1,8 +1,9 @@
 export { default as Add } from './svgs/Add';
 
-export { default as Backspace } from './svgs/Backspace';
+export { default as ArrowBack } from './svgs/ArrowBack';
 
 export { default as Close } from './svgs/Close';
+export { default as CloseCircle } from './svgs/CloseCircle';
 export { default as Calendar } from './svgs/Calendar';
 export { default as CheckboxCircleFill } from './svgs/CheckboxCircleFill';
 export { default as CheckboxCircleLine } from './svgs/CheckboxCircleLine';

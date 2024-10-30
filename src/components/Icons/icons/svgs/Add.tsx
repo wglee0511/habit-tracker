@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IconStyleProps } from 'src/Icons/type';
+import { IconStyleProps } from '../../type';
 
 const Add = ({ size, color }: IconStyleProps) => (
   <svg

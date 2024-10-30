@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-import { IconStyleProps } from 'src/Icons/type';
+import { IconStyleProps } from '../../type';
 
 const CheckboxCircleLine = ({ size, color }: IconStyleProps) => (
   <svg

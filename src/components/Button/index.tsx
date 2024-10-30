@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import styled from '@emotion/styled';
 import { isNil } from 'lodash';
@@ -32,16 +32,30 @@ const S = {
 const Button = ({
   width,
   isSelected = false,
+  theme = 'secondary',
   children,
   ...props
 }: React.PropsWithChildren<ButtonProps>) => {
   const { thirdBackgroundColor, secondBackgroundColor } = useThemeStore();
+
   const innerStyle = isNil(width) ? { flex: 1 } : { width };
+
+  const { secondBgColor, thirdBgColor } = useMemo(() => {
+    switch (theme) {
+      case 'primary':
+        return { secondBgColor: COLORS.primary300, thirdBgColor: COLORS.primary200 };
+      case 'errorPrimary':
+        return { secondBgColor: COLORS.red300, thirdBgColor: COLORS.red200 };
+      default:
+        return { secondBgColor: secondBackgroundColor, thirdBgColor: thirdBackgroundColor };
+    }
+  }, [secondBackgroundColor, theme, thirdBackgroundColor]);
+
   return (
     <S.Container
       type="button"
       clickcolor={thirdBackgroundColor}
-      backgroundcolor={isSelected ? thirdBackgroundColor : secondBackgroundColor}
+      backgroundcolor={isSelected ? thirdBgColor : secondBgColor}
       style={{ ...innerStyle }}
       {...props}
     >

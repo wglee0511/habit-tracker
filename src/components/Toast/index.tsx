@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import ReactDOM from 'react-dom';
-import { COLORS } from 'src/themes/colors';
+import { useThemeStore } from 'src/stores';
 
 import Text from '../Text';
 
@@ -75,6 +75,8 @@ const Toast = ({
   const isVisibleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resetToastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const { secondBackgroundColor, textColor } = useThemeStore();
+
   const [isVisible, setIsVisible] = useState(false);
   const [onMount, setOnMount] = useState(false);
 
@@ -115,13 +117,13 @@ const Toast = ({
         isOneLine={lines === 1}
         isVisible={isVisible}
         hasMessage={!!message}
-        backgroundColor={COLORS.grey300}
+        backgroundColor={secondBackgroundColor}
       >
         <S.TextContainer>
           <Text
-            fontSize={1}
+            fontSize={16}
             fontWeight={400}
-            color={COLORS.black}
+            color={textColor}
           >
             {message}
           </Text>

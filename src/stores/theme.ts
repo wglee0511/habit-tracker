@@ -7,6 +7,7 @@ type ThemeValueType = {
   backgroundColor: string;
   secondBackgroundColor: string;
   thirdBackgroundColor: string;
+  placeHolderColor: string;
 };
 
 type ThemeType = ThemeValueType & {};
@@ -16,6 +17,7 @@ export const lightThemeState: ThemeValueType = {
   backgroundColor: COLORS.grey100,
   secondBackgroundColor: COLORS.grey200,
   thirdBackgroundColor: COLORS.grey300,
+  placeHolderColor: COLORS.grey700,
 };
 
 export const darkThemeState: ThemeValueType = {
@@ -23,6 +25,7 @@ export const darkThemeState: ThemeValueType = {
   backgroundColor: COLORS.grey900,
   secondBackgroundColor: COLORS.grey800,
   thirdBackgroundColor: COLORS.grey700,
+  placeHolderColor: COLORS.grey300,
 };
 
 export const useThemeStore = create<ThemeType>()(devtools(() => ({ ...darkThemeState })));

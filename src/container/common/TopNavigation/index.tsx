@@ -1,8 +1,8 @@
 import React, { useCallback, useRef } from 'react';
 
 import styled from '@emotion/styled';
+import Icon from 'src/components/Icons';
 import Text from 'src/components/Text';
-import Icon from 'src/Icons';
 import { hapticFeedback } from 'src/lib/device';
 import { useThemeStore } from 'src/stores';
 
@@ -66,7 +66,7 @@ const TopNavigation = ({
       >
         {name}
       </Text>
-      {trailingIcon && (
+      {trailingIcon ? (
         <button
           type="button"
           ref={trailingButtonRef}
@@ -78,6 +78,8 @@ const TopNavigation = ({
             color={textColor}
           />
         </button>
+      ) : (
+        <div />
       )}
     </S.Container>
   );

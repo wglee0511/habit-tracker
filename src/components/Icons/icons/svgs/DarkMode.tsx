@@ -3,7 +3,12 @@ import React from 'react';
 import { IconStyleProps } from '../../type';
 
 const DarkMode = ({ size, color }: IconStyleProps) => (
-  <svg width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none">
+  <svg
+    width={size || 24}
+    height={size || 24}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
     <g clipPath="url(#clip0_429_11017)">
       <path
         // eslint-disable-next-line max-len
@@ -13,7 +18,11 @@ const DarkMode = ({ size, color }: IconStyleProps) => (
     </g>
     <defs>
       <clipPath id="clip0_429_11017">
-        <rect width={size || 24} height={size || 24} fill="white" />
+        <rect
+          width={size || 24}
+          height={size || 24}
+          fill="white"
+        />
       </clipPath>
     </defs>
   </svg>

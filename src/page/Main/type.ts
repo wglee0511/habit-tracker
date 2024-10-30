@@ -1,3 +1,3 @@
-import { HABIT_MANAGING, HABIT_TRACKING } from 'src/lib/constants';
+import { ROUTINE_MANAGING, ROUTINE_TRACKING } from 'src/lib/constants';
 
-export type MainBottomBarType = typeof HABIT_MANAGING | typeof HABIT_TRACKING;
+export type MainBottomBarType = typeof ROUTINE_MANAGING | typeof ROUTINE_TRACKING;

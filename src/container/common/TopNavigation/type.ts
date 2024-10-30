@@ -1,4 +1,4 @@
-import { IconOption } from 'src/Icons/type';
+import { IconOption } from 'src/components/Icons/type';
 
 export interface TopNavigationProps {
   name?: string;

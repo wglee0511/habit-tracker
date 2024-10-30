@@ -4,7 +4,12 @@ import React from 'react';
 import { IconStyleProps } from '../../type';
 
 const Share = ({ size, color }: IconStyleProps) => (
-  <svg width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none">
+  <svg
+    width={size || 24}
+    height={size || 24}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
     <path
       fillRule="evenodd"
       clipRule="evenodd"

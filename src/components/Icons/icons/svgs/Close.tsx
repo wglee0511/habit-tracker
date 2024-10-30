@@ -4,7 +4,12 @@ import React from 'react';
 import { IconStyleProps } from '../../type';
 
 const Close = ({ size, color }: IconStyleProps) => (
-  <svg width={size || 24} height={size || 24} viewBox="-0.5 0 25 25" fill="none">
+  <svg
+    width={size || 24}
+    height={size || 24}
+    viewBox="-0.5 0 25 25"
+    fill="none"
+  >
     <path
       d="M3 21.32L21 3.32001"
       stroke={color}
