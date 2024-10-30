@@ -119,7 +119,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           <>
             <S.LabelContainer>
               <Text
-                fontSize={16}
+                fontSize={12}
                 fontWeight={600}
                 color={textColor}
                 alignItems="center"
