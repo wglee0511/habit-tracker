@@ -1,3 +1,5 @@
+export { default as Add } from './svgs/Add';
+
 export { default as Backspace } from './svgs/Backspace';
 
 export { default as Close } from './svgs/Close';

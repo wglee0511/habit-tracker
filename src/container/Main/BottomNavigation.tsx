@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 
 import styled from '@emotion/styled';
+import Button from 'src/components/Button';
 import Icon from 'src/Icons';
 import { BOTTOM_NAVIGATION_Z_INDEX, HABIT_MANAGING, HABIT_TRACKING } from 'src/lib/constants';
 import { MainBottomBarType } from 'src/page/Main/type';
@@ -13,7 +14,7 @@ const S = {
     display: flex;
     width: 400px;
     border-radius: ${RADIUS.xxl};
-    padding: 10px 10px;
+    padding: 5px 5px;
 
     @media screen and (max-width: 400px) {
       width: 100%;
@@ -47,7 +48,7 @@ const BottomNavigation = ({
   onClickBottomTab: (selectedTab: MainBottomBarType) => void;
 }) => {
   const isManaging = useMemo(() => tab === HABIT_MANAGING, [tab]);
-  const { textColor, secondBackgroundColor, thirdBackgroundColor } = useThemeStore();
+  const { textColor, secondBackgroundColor } = useThemeStore();
 
   return (
     <div
@@ -61,28 +62,26 @@ const BottomNavigation = ({
       }}
     >
       <S.Container style={{ backgroundColor: secondBackgroundColor }}>
-        <S.Button
-          style={{ backgroundColor: isManaging ? thirdBackgroundColor : 'transparent' }}
+        <Button
+          isSelected={isManaging}
           onClick={() => onClickBottomTab(HABIT_MANAGING)}
-          clickcolor={thirdBackgroundColor}
         >
           <Icon
             icon="Calendar"
-            size={32}
+            size={26}
             color={textColor}
           />
-        </S.Button>
-        <S.Button
-          style={{ backgroundColor: !isManaging ? thirdBackgroundColor : 'transparent' }}
+        </Button>
+        <Button
+          isSelected={!isManaging}
           onClick={() => onClickBottomTab(HABIT_TRACKING)}
-          clickcolor={thirdBackgroundColor}
         >
           <Icon
             icon="CheckboxCircleLine"
-            size={32}
+            size={26}
             color={textColor}
           />
-        </S.Button>
+        </Button>
       </S.Container>
     </div>
   );

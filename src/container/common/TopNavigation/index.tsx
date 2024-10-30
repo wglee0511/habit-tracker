@@ -54,13 +54,13 @@ const TopNavigation = ({
         >
           <Icon
             icon={leadingIcon}
-            size={48}
+            size={32}
             color={textColor}
           />
         </button>
       )}
       <Text
-        fontSize={32}
+        fontSize={26}
         fontWeight={700}
         color={textColor}
       >
@@ -74,7 +74,7 @@ const TopNavigation = ({
         >
           <Icon
             icon={trailingIcon}
-            size={48}
+            size={32}
             color={textColor}
           />
         </button>
