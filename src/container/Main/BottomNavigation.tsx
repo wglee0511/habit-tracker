@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import styled from '@emotion/styled';
 import Icon from 'src/Icons';
-import { BOTTOM_NAVIGATION_Z_INDEX } from 'src/lib/constants';
+import { BOTTOM_NAVIGATION_Z_INDEX, HABIT_MANAGING, HABIT_TRACKING } from 'src/lib/constants';
+import { MainBottomBarType } from 'src/page/Main/type';
 import { useThemeStore } from 'src/stores';
-import { COLORS, SELECTED_COLOR } from 'src/themes/colors';
+import { COLORS } from 'src/themes/colors';
 import { RADIUS } from 'src/themes/radius';
 
 const S = {
@@ -18,7 +19,7 @@ const S = {
       width: 100%;
     }
   `,
-  Button: styled.button`
+  Button: styled.button<{ clickcolor: string }>`
     flex: 1;
     display: flex;
     justify-content: center;
@@ -33,13 +34,20 @@ const S = {
     }
 
     :active {
-      background-color: ${SELECTED_COLOR};
+      background-color: ${(props) => props.clickcolor};
     }
   `,
 };
 
-const BottomNavigation = () => {
-  const { textColor, secondBackgroundColor } = useThemeStore();
+const BottomNavigation = ({
+  tab,
+  onClickBottomTab,
+}: {
+  tab: MainBottomBarType;
+  onClickBottomTab: (selectedTab: MainBottomBarType) => void;
+}) => {
+  const isManaging = useMemo(() => tab === HABIT_MANAGING, [tab]);
+  const { textColor, secondBackgroundColor, thirdBackgroundColor } = useThemeStore();
 
   return (
     <div
@@ -53,16 +61,24 @@ const BottomNavigation = () => {
       }}
     >
       <S.Container style={{ backgroundColor: secondBackgroundColor }}>
-        <S.Button>
+        <S.Button
+          style={{ backgroundColor: isManaging ? thirdBackgroundColor : 'transparent' }}
+          onClick={() => onClickBottomTab(HABIT_MANAGING)}
+          clickcolor={thirdBackgroundColor}
+        >
           <Icon
             icon="Calendar"
             size={32}
             color={textColor}
           />
         </S.Button>
-        <S.Button>
+        <S.Button
+          style={{ backgroundColor: !isManaging ? thirdBackgroundColor : 'transparent' }}
+          onClick={() => onClickBottomTab(HABIT_TRACKING)}
+          clickcolor={thirdBackgroundColor}
+        >
           <Icon
-            icon="Progress"
+            icon="CheckboxCircleLine"
             size={32}
             color={textColor}
           />
