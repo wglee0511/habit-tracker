@@ -41,26 +41,5 @@ export class InitialRoutine {
 
   customValue = '1';
 
-  completeDates = [
-    new Date('2024-9-9'),
-    new Date('2024-9-11'),
-    new Date('2024-9-12'),
-    new Date('2024-9-13'),
-    new Date('2024-9-14'),
-    new Date('2024-9-15'),
-    new Date('2024-9-5'),
-    new Date('2024-10-6'),
-    new Date('2024-10-7'),
-    new Date('2024-10-8'),
-    new Date('2024-10-10'),
-    new Date('2024-10-11'),
-    new Date('2024-10-12'),
-    new Date('2024-10-13'),
-    new Date('2024-10-14'),
-    new Date('2024-10-15'),
-    new Date('2024-10-24'),
-    new Date('2024-10-26'),
-    new Date('2024-10-27'),
-    new Date('2024-10-28'),
-  ];
+  completeDates = [];
 }
