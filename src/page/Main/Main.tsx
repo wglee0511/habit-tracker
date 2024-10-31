@@ -5,14 +5,14 @@ import { isEmpty } from 'lodash';
 import Button from 'src/components/Button';
 import Divider from 'src/components/Divider';
 import Icon from 'src/components/Icons';
-import Text from 'src/components/Text';
 import ResponsiveContainer from 'src/container/common/ResponsiveContainer';
 import TopNavigation from 'src/container/common/TopNavigation';
 import BottomNavigation from 'src/container/Main/BottomNavigation';
+import EmptyRoutineButton from 'src/container/Main/EmptyRoutineButton';
 import MainManaging from 'src/container/Main/MainManaging';
 import MainManagingFullPageModal from 'src/container/Main/MainManagingFullPageModal';
 import MainTracking from 'src/container/Main/MainTracking';
-import { ROUTINE_ADD_TEXT, ROUTINE_MANAGING, ROUTINE_TRACKING } from 'src/lib/constants';
+import { ROUTINE_MANAGING, ROUTINE_TRACKING } from 'src/lib/constants';
 import { hapticFeedback } from 'src/lib/device';
 import { useModalStore, useSystemStore, useThemeStore } from 'src/stores';
 import { useRoutineStore } from 'src/stores/routine';
@@ -72,23 +72,7 @@ const Main = () => {
 
   const renderContents = useMemo(() => {
     if (isEmpty(routines)) {
-      return (
-        <Button
-          width="100%"
-          radius={RADIUS.base}
-          onClick={onClickAddRoutineButton}
-        >
-          <Divider vertical={40} />
-          <Text
-            fontSize={16}
-            fontWeight={600}
-            color={textColor}
-          >
-            {ROUTINE_ADD_TEXT}
-          </Text>
-          <Divider vertical={40} />
-        </Button>
-      );
+      return <EmptyRoutineButton onClickButton={onClickAddRoutineButton} />;
     }
 
     switch (tab) {
@@ -99,7 +83,7 @@ const Main = () => {
       default:
         return <MainManaging />;
     }
-  }, [routines, tab, textColor]);
+  }, [routines, tab]);
 
   return (
     <S.Container ref={containerRef}>

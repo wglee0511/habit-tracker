@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { map } from 'lodash';
 import Divider from 'src/components/Divider';
@@ -11,16 +11,12 @@ import RoutineTrackingCard from './RoutineTrackingCard';
 const MainTracking = () => {
   const { routines } = useRoutineStore();
 
-  const renderRoutines = useMemo(
-    () =>
-      map(routines, (value) => (
-        <RoutineTrackingCard
-          key={value.routineKey}
-          {...value}
-        />
-      )),
-    [routines],
-  );
+  const renderRoutines = map(routines, (value) => (
+    <RoutineTrackingCard
+      key={value.routineKey}
+      {...value}
+    />
+  ));
 
   return (
     <ListContainer>

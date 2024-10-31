@@ -137,49 +137,43 @@ const MainManagingFullPageModal = () => {
   }, [habitManagementModal.routineKey, isStart, routine, routines]);
 
   const onClickDeleteButton = () => {
-    useRoutineStore.setState(() => {
-      const filteredRoutine = filter(
-        [...routines],
-        (value) => value.routineKey !== habitManagementModal?.routineKey,
-      );
+    const filteredRoutine = filter(
+      [...routines],
+      (value) => value.routineKey !== habitManagementModal?.routineKey,
+    );
 
-      return { routines: filteredRoutine };
-    });
-    hapticFeedback();
+    useRoutineStore.setState({ routines: filteredRoutine });
     useToastStore.setState({ message: ROUTINE_DELETE_TOAST_MESSAGE, isVisible: true });
+    hapticFeedback();
     onCloseModal();
   };
 
-  const renderCycleButtons = useMemo(
-    () =>
-      map(
-        [ROUTINE_CYCLE_DAY, ROUTINE_CYCLE_WEEK, ROUTINE_CYCLE_CUSTOM],
-        (value: RoutineCycleType) => (
-          <Button
-            key={value}
-            isSelected={value === routine?.type}
-            onClick={() => {
-              hapticFeedback();
-              setRoutine((prev) => {
-                if (isNil(prev)) {
-                  return prev;
-                }
-                return { ...prev, type: value, customValue: getRoutineCycleDateNumber(value) };
-              });
-            }}
-          >
-            <Text
-              fontSize={16}
-              fontWeight={400}
-              color={textColor}
-              textAlign="center"
-            >
-              {getRoutineCycleText(value)}
-            </Text>
-          </Button>
-        ),
-      ),
-    [textColor, routine],
+  const renderCycleButtons = map(
+    [ROUTINE_CYCLE_DAY, ROUTINE_CYCLE_WEEK, ROUTINE_CYCLE_CUSTOM],
+    (value: RoutineCycleType) => (
+      <Button
+        key={value}
+        isSelected={value === routine?.type}
+        onClick={() => {
+          hapticFeedback();
+          setRoutine((prev) => {
+            if (isNil(prev)) {
+              return prev;
+            }
+            return { ...prev, type: value, customValue: getRoutineCycleDateNumber(value) };
+          });
+        }}
+      >
+        <Text
+          fontSize={16}
+          fontWeight={400}
+          color={textColor}
+          textAlign="center"
+        >
+          {getRoutineCycleText(value)}
+        </Text>
+      </Button>
+    ),
   );
 
   useEffect(() => {
@@ -229,7 +223,6 @@ const MainManagingFullPageModal = () => {
                   if (isNil(prev)) {
                     return prev;
                   }
-
                   return { ...prev, name: '' };
                 })
               }
@@ -261,7 +254,6 @@ const MainManagingFullPageModal = () => {
                       if (isNil(prev)) {
                         return prev;
                       }
-
                       return { ...prev, name: '' };
                     })
                   }

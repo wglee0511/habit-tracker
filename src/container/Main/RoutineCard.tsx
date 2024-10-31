@@ -8,6 +8,7 @@ import Divider from 'src/components/Divider';
 import Icon from 'src/components/Icons';
 import Text from 'src/components/Text';
 import { getHasSelectedToday, getIsToday, getMonthDateHour } from 'src/lib/day';
+import { hapticFeedback } from 'src/lib/device';
 import { getRoutineCycleText } from 'src/lib/text';
 import { useModalStore, useThemeStore } from 'src/stores';
 import { RoutineType, useRoutineStore } from 'src/stores/routine';
@@ -42,30 +43,31 @@ const RoutineCard = ({ customValue, routineKey, type, completeDates, name }: Rou
   );
 
   const onClickEditButton = () => {
+    hapticFeedback();
     useModalStore.setState({ habitManagementModal: { isVisible: true, routineKey } });
   };
 
   const onClickCompleteButton = useCallback(() => {
-    useRoutineStore.setState(() => {
-      const routineArray = map(routines, (value) => {
-        if (value.routineKey === routineKey) {
-          if (hasSelectedToday) {
-            const filteredDates = filter([...value.completeDates], (date) => !getIsToday(date));
-            return {
-              ...value,
-              completeDates: [...filteredDates],
-            };
-          }
+    hapticFeedback();
+    const routineArray = map(routines, (value) => {
+      if (value.routineKey === routineKey) {
+        if (hasSelectedToday) {
+          const filteredDates = filter([...value.completeDates], (date) => !getIsToday(date));
           return {
             ...value,
-            completeDates: [...value.completeDates, new Date()],
+            completeDates: [...filteredDates],
           };
         }
+        return {
+          ...value,
+          completeDates: [...value.completeDates, new Date()],
+        };
+      }
 
-        return value;
-      });
-      return { routines: routineArray };
+      return value;
     });
+
+    useRoutineStore.setState({ routines: routineArray });
   }, [hasSelectedToday, routineKey, routines]);
 
   return (

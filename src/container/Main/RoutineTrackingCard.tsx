@@ -12,6 +12,7 @@ import {
   getMaxSequenceCompleteDates,
   getThisMonthDateCount,
 } from 'src/lib/day';
+import { hapticFeedback } from 'src/lib/device';
 import { useThemeStore } from 'src/stores';
 import { RoutineType } from 'src/stores/routine';
 import { COLORS } from 'src/themes/colors';
@@ -67,6 +68,11 @@ const RoutineTrackingCard = ({ name, completeDates }: RoutineType) => {
 
   const count = useCountUp(recordPercentValue, 0, 500);
 
+  const onClickButton = (tab: RecordType) => {
+    hapticFeedback();
+    setRecordTab(() => tab);
+  };
+
   return (
     <S.Container style={{ backgroundColor: thirdBackgroundColor }}>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -81,7 +87,7 @@ const RoutineTrackingCard = ({ name, completeDates }: RoutineType) => {
         <S.ButtonContainer style={{ backgroundColor: secondBackgroundColor }}>
           <Button
             isSelected={recordTab === 'WEEK'}
-            onClick={() => setRecordTab(() => WEEK)}
+            onClick={() => onClickButton('WEEK')}
           >
             <Text
               fontSize={12}
@@ -93,7 +99,7 @@ const RoutineTrackingCard = ({ name, completeDates }: RoutineType) => {
           </Button>
           <Button
             isSelected={recordTab === 'MONTH'}
-            onClick={() => setRecordTab(() => MONTH)}
+            onClick={() => onClickButton('MONTH')}
           >
             <Text
               fontSize={12}
