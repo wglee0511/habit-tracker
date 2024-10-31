@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 import styled from '@emotion/styled';
 import { isEmpty } from 'lodash';
@@ -27,7 +27,6 @@ const S = {
     flex-direction: column;
     width: 100%;
     height: 100vh;
-    overflow: scroll;
 
     ${customScrollBar};
   `,
@@ -53,14 +52,19 @@ const Main = () => {
   const { habitManagementModal } = useModalStore();
   const { routines } = useRoutineStore();
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const onClickThemeButton = useCallback(() => {
     useSystemStore.setState({ isDarkTheme: !isDarkTheme });
   }, [isDarkTheme]);
 
-  const onClickBottomTab = (selectedTab: MainBottomBarType) => {
+  const onClickBottomTab = useCallback((selectedTab: MainBottomBarType) => {
     setTab(() => selectedTab);
     hapticFeedback();
-  };
+    if (containerRef?.current !== null) {
+      containerRef?.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, []);
 
   const onClickAddRoutineButton = () => {
     useModalStore.setState({ habitManagementModal: { isVisible: true, routineKey: null } });
@@ -98,7 +102,7 @@ const Main = () => {
   }, [routines, tab, textColor]);
 
   return (
-    <S.Container>
+    <S.Container ref={containerRef}>
       <TopNavigation
         name={tab}
         trailingIcon={isDarkTheme ? 'LightMode' : 'DarkMode'}

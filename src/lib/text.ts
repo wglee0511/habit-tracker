@@ -5,6 +5,9 @@ import {
   ROUTINE_CYCLE_CUSTOM_TEXT,
   ROUTINE_CYCLE_DAY_TEXT,
   ROUTINE_CYCLE_WEEK_TEXT,
+  ROUTINE_INITIAL_CUSTOM_VALUE,
+  ROUTINE_INITIAL_DAY_VALUE,
+  ROUTINE_INITIAL_WEEK_VALUE,
 } from './constants';
 import { removeTextRegex } from './regex';
 
@@ -27,13 +30,13 @@ export const getRoutineCycleText = (tag: RoutineCycleType, customValue?: string)
 export const getRoutineCycleDateNumber = (tag: RoutineCycleType) => {
   switch (tag) {
     case 'DAY':
-      return '1';
+      return ROUTINE_INITIAL_DAY_VALUE;
     case 'WEEK':
-      return '7';
+      return ROUTINE_INITIAL_WEEK_VALUE;
     case 'CUSTOM':
-      return '10';
+      return ROUTINE_INITIAL_CUSTOM_VALUE;
     default:
-      return '1';
+      return ROUTINE_INITIAL_DAY_VALUE;
   }
 };
 

@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 
 import { map } from 'lodash';
+import Divider from 'src/components/Divider';
 import { useRoutineStore } from 'src/stores/routine';
 
 import ListContainer from '../common/ListContainer';
@@ -21,7 +22,12 @@ const MainTracking = () => {
     [routines],
   );
 
-  return <ListContainer>{renderRoutines}</ListContainer>;
+  return (
+    <ListContainer>
+      {renderRoutines}
+      <Divider vertical={150} />
+    </ListContainer>
+  );
 };
 
 export default MainTracking;
