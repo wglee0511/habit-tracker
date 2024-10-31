@@ -1,22 +1,12 @@
 import React, { useMemo } from 'react';
 
-import styled from '@emotion/styled';
 import { map } from 'lodash';
 import Divider from 'src/components/Divider';
 import { useRoutineStore } from 'src/stores/routine';
 
-import RoutineCard from './RoutineCard';
+import ListContainer from '../common/ListContainer';
 
-const S = {
-  Container: styled.div`
-    flex: 1;
-    flex-direction: column;
-    display: flex;
-    width: 100%;
-    padding: 12px 20px;
-    gap: 12px;
-  `,
-};
+import RoutineCard from './RoutineCard';
 
 const MainManaging = () => {
   const { routines } = useRoutineStore();
@@ -33,10 +23,10 @@ const MainManaging = () => {
   );
 
   return (
-    <S.Container>
+    <ListContainer>
       {renderCards}
       <Divider vertical={150} />
-    </S.Container>
+    </ListContainer>
   );
 };
 

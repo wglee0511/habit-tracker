@@ -14,8 +14,6 @@ import { RoutineType, useRoutineStore } from 'src/stores/routine';
 import { COLORS } from 'src/themes/colors';
 import { RADIUS } from 'src/themes/radius';
 
-interface RoutineCardProps extends RoutineType {}
-
 const S = {
   Container: styled.div`
     flex: 1;
@@ -32,7 +30,7 @@ const S = {
   `,
 };
 
-const RoutineCard = ({ customValue, routineKey, type, completeDates, name }: RoutineCardProps) => {
+const RoutineCard = ({ customValue, routineKey, type, completeDates, name }: RoutineType) => {
   const { textColor, thirdBackgroundColor, backgroundColor } = useThemeStore();
   const { routines } = useRoutineStore();
 

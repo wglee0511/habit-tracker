@@ -9,6 +9,7 @@ export const ROUTINE_MODIFY = '수정하기';
 export const ROUTINE_MANAGING = '루틴 관리하기';
 export const ROUTINE_TRACKING = '루틴 추적하기';
 export const ROUTINE_NAME = '루틴 이름';
+export const ROUTINE_ADD_TEXT = '루틴을 추가해 주세요!';
 export const ROUTINE_NAME_PLACE_HOLDER = '루틴 이름을 입력해주세요.';
 export const ROUTINE_CYCLE_PLACE_HOLDER = '루틴 주기를 입력해주세요.';
 export const ROUTINE_CYCLE_CUSTOM_LABEL = '주기 선택';
