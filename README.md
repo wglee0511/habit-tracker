@@ -4,13 +4,13 @@
 
 ## 구현 사항
 
-- [] 습관 추가/수정:
+- [x] 습관 추가/수정:
   - 습관 이름과 빈도를 입력하는 화면을 제공하여 새로운 습관을 추가할 수 있습니다.
   - 기존의 습관을 수정할 수 있도록 합니다.
-- [] 습관 완료 표시:
+- [x] 습관 완료 표시:
   - 오늘의 모든 습관을 보여주는 홈 화면을 제공합니다.
   - 사용자가 습관을 완료했을 때 탭하여 "완료" 상태로 표시할 수 있습니다.
-- [] 습관 스트릭 및 진행 상황:
+- [x] 습관 스트릭 및 진행 상황:
   - 각 습관에 대해 연속으로 완료한 일수를 표시합니다.
   - 사용자가 일정 기간 동안 얼마나 자주 습관을 완료했는지에 따라 진행 상황 막대를 표시합니다. (예: 한 주 동안 매일)
 
@@ -39,6 +39,101 @@ npm run start
 ## 폴더구조
 
 ```
+├── App.tsx
+├── components
+│   ├── Button
+│   │   ├── index.tsx
+│   │   └── type.tsx
+│   ├── Divider
+│   │   ├── index.tsx
+│   │   └── type.ts
+│   ├── Icons
+│   │   ├── PressableIcon
+│   │   │   ├── index.tsx
+│   │   │   └── type.ts
+│   │   ├── icons
+│   │   │   ├── index.ts
+│   │   │   └── svgs
+│   │   │       ├── Add.tsx
+│   │   │       ├── ArrowBack.tsx
+│   │   │       ├── Calendar.tsx
+│   │   │       ├── CheckboxCircleFill.tsx
+│   │   │       ├── CheckboxCircleLine.tsx
+│   │   │       ├── Close.tsx
+│   │   │       ├── CloseCircle.tsx
+│   │   │       ├── DarkMode.tsx
+│   │   │       ├── Edit.tsx
+│   │   │       ├── LightMode.tsx
+│   │   │       ├── Progress.tsx
+│   │   │       ├── Reset.tsx
+│   │   │       └── Share.tsx
+│   │   ├── index.tsx
+│   │   └── type.ts
+│   ├── InputField
+│   │   ├── constant.ts
+│   │   ├── index.tsx
+│   │   └── type.ts
+│   ├── Modal
+│   │   ├── FullPageModal
+│   │   │   └── index.tsx
+│   │   ├── hook.ts
+│   │   └── type.ts
+│   ├── SwitchSelector
+│   │   ├── index.tsx
+│   │   └── type.ts
+│   ├── Text
+│   │   ├── index.tsx
+│   │   └── type.ts
+│   ├── Theme
+│   │   └── index.tsx
+│   └── Toast
+│       ├── index.tsx
+│       └── type.ts
+├── container
+│   ├── Main
+│   │   ├── BottomNavigation.tsx
+│   │   ├── MainManaging.tsx
+│   │   ├── MainManagingFullPageModal.tsx
+│   │   ├── MainTracking.tsx
+│   │   ├── RoutineCard.tsx
+│   │   └── RoutineTrackingCard.tsx
+│   └── common
+│       ├── ListContainer
+│       │   └── index.tsx
+│       ├── ResponsiveContainer
+│       │   └── index.tsx
+│       └── TopNavigation
+│           ├── index.tsx
+│           └── type.ts
+├── hooks
+│   ├── useCountUp.ts
+│   └── useForwardRef.ts
+├── index.tsx
+├── lib
+│   ├── constants.ts
+│   ├── day.ts
+│   ├── device.ts
+│   ├── regex.ts
+│   └── text.ts
+├── page
+│   └── Main
+│       ├── Main.tsx
+│       └── type.ts
+├── stores
+│   ├── index.ts
+│   ├── modal.ts
+│   ├── routine.ts
+│   ├── system.ts
+│   ├── theme.ts
+│   └── toast.ts
+├── themes
+│   ├── ResetStyle.tsx
+│   ├── colors.ts
+│   ├── radius.ts
+│   └── style.ts
+└── types
+    ├── common.ts
+    └── react.ts
 
 ```
 
