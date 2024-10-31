@@ -8,10 +8,10 @@ export type RoutineCycleType =
   | typeof ROUTINE_CYCLE_CUSTOM;
 
 export type RoutineType = {
-  key: number | string;
+  routineKey: number | string;
   name: string;
   type: RoutineCycleType;
-  customValue?: string;
+  customValue: string;
   completeDates: Date[];
 };
 
@@ -27,19 +27,19 @@ export const useRoutineStore = create<RoutineStoreType>()(
   devtools(
     persist(() => ({ ...initialRoutineState }), {
       name: 'routine',
-      storage: createJSONStorage(() => sessionStorage),
+      storage: createJSONStorage(() => localStorage),
     }),
   ),
 );
 
 export class InitialRoutine {
-  key = new Date().getTime();
+  routineKey = new Date().getTime();
 
   name = '';
 
   type = 'DAY';
 
-  customValue = '0';
+  customValue = '1';
 
   completeDates = [];
 }

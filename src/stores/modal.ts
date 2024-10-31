@@ -3,7 +3,7 @@ import { create } from 'zustand';
 type ModalValueType = {
   habitManagementModal: {
     isVisible: boolean;
-    routineKey?: string | null;
+    routineKey?: string | null | number;
   };
 };
 

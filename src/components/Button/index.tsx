@@ -14,7 +14,6 @@ const S = {
     justify-content: center;
     align-items: center;
     padding: 10px 10px;
-    border-radius: ${RADIUS.xxl};
     transition: all 0.5s;
     background-color: ${(props) => props.backgroundcolor};
     cursor: pointer;
@@ -33,6 +32,7 @@ const Button = ({
   width,
   isSelected = false,
   theme = 'secondary',
+  radius = RADIUS.xxl,
   children,
   ...props
 }: React.PropsWithChildren<ButtonProps>) => {
@@ -56,7 +56,7 @@ const Button = ({
       type="button"
       clickcolor={thirdBackgroundColor}
       backgroundcolor={isSelected ? thirdBgColor : secondBgColor}
-      style={{ ...innerStyle }}
+      style={{ ...innerStyle, borderRadius: radius }}
       {...props}
     >
       {children}

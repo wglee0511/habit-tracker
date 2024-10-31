@@ -13,7 +13,7 @@ const S = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 20px;
+    padding: 12px 20px;
   `,
 };
 

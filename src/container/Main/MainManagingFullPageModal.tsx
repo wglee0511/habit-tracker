@@ -23,9 +23,11 @@ import {
   ROUTINE_CONFIRM_TOAST_MESSAGE,
   SAVE_BUTTON_TEXT,
   ROUTINE_SUCCESS_TOAST_MESSAGE,
+  ROUTINE_DELETE_TOAST_MESSAGE,
+  ROUTINE_SAVE_TOAST_MESSAGE,
 } from 'src/lib/constants';
 import { hapticFeedback } from 'src/lib/device';
-import { getRemoveText, getRoutineCycleText } from 'src/lib/text';
+import { getRemoveText, getRoutineCycleDateNumber, getRoutineCycleText } from 'src/lib/text';
 import { useModalStore, useThemeStore, useToastStore } from 'src/stores';
 import { initialModalState } from 'src/stores/modal';
 import { InitialRoutine, RoutineCycleType, RoutineType, useRoutineStore } from 'src/stores/routine';
@@ -47,7 +49,7 @@ const MainManagingFullPageModal = () => {
   const { textColor } = useThemeStore();
 
   const selectedRoutine = useMemo(
-    () => find(routines, (value) => value.key === habitManagementModal.routineKey),
+    () => find(routines, (value) => value.routineKey === habitManagementModal.routineKey),
     [habitManagementModal.routineKey, routines],
   );
   const isStart = useMemo(() => isNil(selectedRoutine), [selectedRoutine]);
@@ -111,25 +113,41 @@ const MainManagingFullPageModal = () => {
     const isValidRoutine = routine?.name !== '' && isValidCustomCycleValue;
 
     if (isValidRoutine && !isNil(routine)) {
-      useRoutineStore.setState({ routines: [...routines, routine] });
+      if (isStart) {
+        useRoutineStore.setState({ routines: [...routines, routine] });
+      } else {
+        useRoutineStore.setState(() => {
+          const convertRoutine = map([...routines], (value) => {
+            if (value.routineKey === habitManagementModal.routineKey) {
+              return routine;
+            }
+            return value;
+          });
+          return { routines: convertRoutine };
+        });
+      }
+      useToastStore.setState({
+        message: isStart ? ROUTINE_SUCCESS_TOAST_MESSAGE : ROUTINE_SAVE_TOAST_MESSAGE,
+        isVisible: true,
+      });
       onCloseModal();
-      useToastStore.setState({ message: ROUTINE_SUCCESS_TOAST_MESSAGE, isVisible: true });
     } else {
       useToastStore.setState({ message: ROUTINE_CONFIRM_TOAST_MESSAGE, isVisible: true });
     }
-  }, [routine, routines]);
+  }, [habitManagementModal.routineKey, isStart, routine, routines]);
 
   const onClickDeleteButton = () => {
-    hapticFeedback();
-    onCloseModal();
     useRoutineStore.setState(() => {
       const filteredRoutine = filter(
         [...routines],
-        (value) => value.key !== habitManagementModal?.routineKey,
+        (value) => value.routineKey !== habitManagementModal?.routineKey,
       );
 
       return { routines: filteredRoutine };
     });
+    hapticFeedback();
+    useToastStore.setState({ message: ROUTINE_DELETE_TOAST_MESSAGE, isVisible: true });
+    onCloseModal();
   };
 
   const renderCycleButtons = useMemo(
@@ -146,7 +164,7 @@ const MainManagingFullPageModal = () => {
                 if (isNil(prev)) {
                   return prev;
                 }
-                return { ...prev, type: value };
+                return { ...prev, type: value, customValue: getRoutineCycleDateNumber(value) };
               });
             }}
           >

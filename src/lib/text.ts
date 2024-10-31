@@ -8,13 +8,16 @@ import {
 } from './constants';
 import { removeTextRegex } from './regex';
 
-export const getRoutineCycleText = (tag: RoutineCycleType) => {
+export const getRoutineCycleText = (tag: RoutineCycleType, customValue?: string) => {
   switch (tag) {
     case 'DAY':
       return ROUTINE_CYCLE_DAY_TEXT;
     case 'WEEK':
       return ROUTINE_CYCLE_WEEK_TEXT;
     case 'CUSTOM':
+      if (customValue) {
+        return `${customValue} 일`;
+      }
       return ROUTINE_CYCLE_CUSTOM_TEXT;
     default:
       return ROUTINE_CYCLE_DAY_TEXT;

@@ -21,7 +21,9 @@ export const ROUTINE_CYCLE_MAX_VALUE = 30;
 export const SAVE_BUTTON_TEXT = '저장하기';
 export const DELETE_BUTTON_TEXT = '삭제하기';
 export const ROUTINE_SUCCESS_TOAST_MESSAGE = '루틴이 생성되었습니다.';
+export const ROUTINE_SAVE_TOAST_MESSAGE = '루틴이 저장되었습니다.';
 export const ROUTINE_CONFIRM_TOAST_MESSAGE = '루틴 이름 혹은 기간을 확인해주세요';
+export const ROUTINE_DELETE_TOAST_MESSAGE = '루틴을 삭제했습니다.';
 
 // 기기 관련
 export const IOS = 'iOS';

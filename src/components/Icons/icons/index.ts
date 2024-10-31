@@ -10,6 +10,8 @@ export { default as CheckboxCircleLine } from './svgs/CheckboxCircleLine';
 
 export { default as DarkMode } from './svgs/DarkMode';
 
+export { default as Edit } from './svgs/Edit';
+
 export { default as LightMode } from './svgs/LightMode';
 
 export { default as Progress } from './svgs/Progress';
